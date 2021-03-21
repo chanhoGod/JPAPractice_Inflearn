@@ -13,6 +13,14 @@ public class Member {
 	//@Column(name = "username")		//마찬가지로 컬럼명과 변수명이 다를 경우에도 값을 지정해서 넣어줄 수 있다.
 	private String name;
 	
+	public Member() {
+		
+	}
+	
+	public Member(long id, String name) {
+		this.id = id;
+		this.name = name;
+	}
 	public long getId() {
 		return id;
 	}
