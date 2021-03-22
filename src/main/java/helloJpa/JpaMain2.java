@@ -28,10 +28,9 @@ public class JpaMain2 {
 //			Member findMember2 = em.find(Member.class, 101L);			//이때는 DB로 쿼리를 날려서 가져오는 것이 아니라 1차캐시에서 가져오는 것
 //			
 //			System.out.println("result : "+ (findMember1 == findMember2)); //동일성을 보장한다.
-			
-			Member findMember1 = em.find(Member.class, 150L);
-			findMember1.setName("zzzz");
-			
+
+//			em.flush() 													//바로 쿼리에 커밋이 되버림 
+//			em.detach(member);											//영속 -> 준영속 커밋을 했을 때에도 결과가 반영되지 않는다. 
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
