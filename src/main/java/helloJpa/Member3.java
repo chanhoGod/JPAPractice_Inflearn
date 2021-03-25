@@ -7,8 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
-@Entity // jpa가 처음 로딩될때 사용되는 클래스라는 것을 인식한다.
-@SequenceGenerator(name = "member_seq_generator", sequenceName = "member_seq", initialValue = 1, allocationSize = 50)
+//@Entity // jpa가 처음 로딩될때 사용되는 클래스라는 것을 인식한다.
+//@SequenceGenerator(name = "member_seq_generator", sequenceName = "member_seq", initialValue = 1, allocationSize = 50)
 public class Member3 {
 
 	@Id // primary key을 인식하는 어노테이션
