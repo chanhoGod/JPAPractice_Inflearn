@@ -1,4 +1,4 @@
-package helloJpa;
+package oneVSn;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,22 +11,19 @@ import javax.persistence.SequenceGenerator;
 
 //@Entity 
 //@SequenceGenerator(name = "member_seq_generator", sequenceName = "member_seq", initialValue = 1, allocationSize = 50)
-public class Member4 {
+public class Member {
 
 	@Id @GeneratedValue	
 	private Long id;
 
 	@Column(name = "USERNAME") 
-	private String userName;
-	
-//	@Column(name = "TEAM_ID")
-//	private Long teamId;
+	private String userName;	
 
-	@ManyToOne						//멤버입장에서 N, 팀 입장에서 1
-	@JoinColumn(name = "TEAM_ID")	//실제 이 컬럼을 무엇과 연관관계를 맺어야 하는가? --> 조인하는 컬럼이 어떤건지?
+	@ManyToOne											
+	@JoinColumn(name = "TEAM_ID", insertable = false, updatable = false)	//현재 일대다 관계 매핑중이며 주인이 아니기 때문에 쓰기, 업데이트를 불가하게 읽기전용으로 만듬
 	private Team team;
 	
-	public Member4() {
+	public Member() {
 	}
 
 	public Long getId() {
@@ -53,15 +50,6 @@ public class Member4 {
 		this.team = team;
 	}
 	
-
-//	public Long getTeamId() {
-//		return teamId;
-//	}
-//
-//	public void setTeamId(Long teamId) {
-//		this.teamId = teamId;
-//	}
-
 
 
 }

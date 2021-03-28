@@ -1,4 +1,4 @@
-package helloJpa;
+package oneVSn;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 //@Entity
@@ -16,8 +17,9 @@ public class Team {
 	private Long Id;
 	private String name;
 	
-	@OneToMany(mappedBy = "team")													//팀은 하나 멤버는 여러개 --> OneToMany 앞에 있는게 현재 클래스 기준
-	private List<Member4> members = new ArrayList<Member4>();
+	@OneToMany
+	@JoinColumn(name = "TEAM_ID")							//JoinColumn을 사용하지 않으면 중간 테이블이 생겨버린다.
+	private List<Member> members = new ArrayList<Member>();
 	
 	public Long getId() {
 		return Id;
@@ -31,12 +33,13 @@ public class Team {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Member4> getMembers() {
+	public List<Member> getMembers() {
 		return members;
 	}
-	public void setMembers(List<Member4> members) {
+	public void setMembers(List<Member> members) {
 		this.members = members;
 	}
+	
 	
 	
 }
