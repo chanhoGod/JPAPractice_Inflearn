@@ -1,16 +1,14 @@
-package nVSm;
-
-import java.util.ArrayList;
-import java.util.List;
+package proxy;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-//@Entity
+@Entity
 public class Member {
 
 	@Id @GeneratedValue
@@ -19,11 +17,13 @@ public class Member {
 	
 	@Column(name = "USERNAME")
 	private String userName;
-	
-	@OneToMany(mappedBy = "member")
-	private List<MemberProduct> memberProducts = new ArrayList<>();
-	
 
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+//	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "TEAM_ID")
+	private Team team;
+	
 	public Long getId() {
 		return id;
 	}
@@ -40,7 +40,13 @@ public class Member {
 		this.userName = userName;
 	}
 
+	public Team getTeam() {
+		return team;
+	}
 
-	
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+
 	
 }

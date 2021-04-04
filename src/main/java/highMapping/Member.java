@@ -1,17 +1,12 @@
-package nVSm;
-
-import java.util.ArrayList;
-import java.util.List;
+package highMapping;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
 
 //@Entity
-public class Member {
+public class Member extends BaseEntity{
 
 	@Id @GeneratedValue
 	@Column(name = "MEMBER_ID")
@@ -20,10 +15,7 @@ public class Member {
 	@Column(name = "USERNAME")
 	private String userName;
 	
-	@OneToMany(mappedBy = "member")
-	private List<MemberProduct> memberProducts = new ArrayList<>();
 	
-
 	public Long getId() {
 		return id;
 	}
