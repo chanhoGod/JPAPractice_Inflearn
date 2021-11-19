@@ -16,11 +16,9 @@ public class Team {
 	@Column(name = "TEAM_ID")
 	private Long Id;
 	private String name;
-	
 	@OneToMany
 	@JoinColumn(name = "TEAM_ID")							//JoinColumn을 사용하지 않으면 중간 테이블이 생겨버린다.
 	private List<Member> members = new ArrayList<Member>();
-	
 	public Long getId() {
 		return Id;
 	}
